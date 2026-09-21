@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NEXUS-01 DESIGN SYSTEM - FUTURISTIC SPACE MISSION INTERFACE
+   NEXUS-01 APP STYLES - INTERACTIVE SPACE MISSION PORTFOLIO
    ========================================================================== */
 
 :root {
@@ -7617,6 +7617,199 @@ button {
 /* ==========================================================================
    DESKTOP RESOLUTION RESPONSIVENESS (1366x768, 1440x900, 1600x900, 1920x1080)
    ========================================================================== */
+
+
+.manual-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.manual-title-row h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+}
+
+.manual-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.manual-intro {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.manual-card {
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.manual-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.manual-card .card-header h4 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+}
+
+.card-note {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.manual-keys-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.manual-keys-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+.key-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.22rem 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  color: #ffffff;
+  min-width: 44px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.key-pill.highlight {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.key-pill.highlight-enter {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+.manual-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+/* ==========================================================================
+   DESKTOP-FIRST INTERFACE & RESPONSIVE GUARD (<900px)
+   ========================================================================== */
+
+/* Fullscreen Blocker for screens below ~900px width */
+.desktop-required-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, rgba(10, 22, 48, 0.98) 0%, rgba(2, 4, 10, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.desktop-required-card {
+  max-width: 520px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(5, 12, 28, 0.92);
+  border: 1px solid var(--border-bright);
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.05);
+  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktop-required-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1.5px solid rgba(0, 240, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+}
+
+.desktop-required-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.desktop-required-subtitle {
+  font-family: var(--font-sub);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.desktop-required-badge {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--accent-cyan);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+}
+
+.desktop-required-badge span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-cyan);
+}
+
+/* ==========================================================================
+   DESKTOP RESOLUTION RESPONSIVENESS (1366x768, 1440x900, 1600x900, 1920x1080)
+   ========================================================================== */
 @media screen and (max-height: 820px) {
   .hud-overlay-container {
     padding: 1rem 1.4rem;
@@ -7629,5 +7822,80 @@ button {
   }
   .sci-fi-bracket {
     padding: 0.7rem 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   DESTINATION ARRIVAL & DISCOVERY NOTIFICATION BANNER
+   ========================================================================== */
+.discovery-notification.arrival-card {
+  position: fixed;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.95rem 2.2rem;
+  background: rgba(5, 14, 32, 0.92);
+  border: 1px solid var(--accent-cyan);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: none;
+  animation: arrivalSlideDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes arrivalSlideDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.arrival-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.arrival-dest-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 18px rgba(0, 240, 255, 0.6);
+  line-height: 1.1;
+}
+
+.arrival-progress-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+}
+
+@media screen and (max-height: 820px) {
+  .discovery-notification.arrival-card {
+    top: 9%;
+    padding: 0.75rem 1.6rem;
+  }
+  .arrival-dest-name {
+    font-size: 1.15rem;
   }
 }

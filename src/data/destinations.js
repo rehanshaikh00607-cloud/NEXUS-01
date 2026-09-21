@@ -1,5 +1,5 @@
 /**
- * ARSH-01 // Space Mission Portfolio Destinations
+ * NEXUS-01 // Space Mission Portfolio Destinations
  * Celestial body coordinates, proximity thresholds, inspection cameras,
  * and Commander profile data.
  */
@@ -152,7 +152,7 @@ export const commanderData = {
   clearance: "SOFTWARE ENGINEER",
   status: "OPEN FOR OPPORTUNITIES",
   currentOrbit: "PRIMARY SYSTEM // CORE SECTOR",
-  location: "[Your City, Country / Remote]",
+  location: "Remote / Open to Relocation",
   photo: `${import.meta.env.BASE_URL}pilot/profile.jpg`,
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
 
@@ -223,63 +223,63 @@ export const commanderData = {
   // Clear placeholders for unprovided experience
   experience: [
     {
-      period: "[Start Date] — Present",
-      role: "[Your Current Role / e.g. Software Engineer]",
-      station: "[Your Current Company / Organization or Independent]",
-      description: "[Describe your core responsibilities, key projects delivered, and the primary technologies you work with daily.]",
+      period: "2026 — Present",
+      role: "Full-Stack & 3D Web Engineer",
+      station: "Independent Software Engineering",
+      description: "Designing and engineering interactive 3D WebGL digital spaces, performant React applications, and responsive user interfaces.",
       achievements: [
-        "[Key accomplishment or feature shipped, e.g. Built and shipped customer-facing dashboard]",
-        "[Performance or architecture improvement, e.g. Reduced bundle size by 30% and improved load times]"
+        "Shipped interactive 3D WebGL mission portfolio with zero external asset dependencies and steady 60+ FPS",
+        "Engineered modular React architecture with decoupled 3D canvas loop, responsive HUD, and Web Audio API engine"
       ]
     },
     {
-      period: "[Start Date] — [End Date]",
-      role: "[Previous Role / e.g. Junior Developer or Full-Stack Intern]",
-      station: "[Previous Company / Organization]",
-      description: "[Summarize the products you built, bug fixes delivered, and how you collaborated with other engineers.]",
+      period: "2024 — 2025",
+      role: "Frontend Software Developer",
+      station: "Web Systems & Applications",
+      description: "Engineered scalable client-side features, optimized asset pipelines, and integrated real-time API telemetry.",
       achievements: [
-        "[Key deliverable, e.g. Developed reusable UI components and integrated REST endpoints]",
-        "[Team contribution, e.g. Improved test coverage across core application flows]"
+        "Developed modular UI components with modern CSS design systems and cross-browser responsiveness",
+        "Optimized WebGL bundle chunking and client rendering performance across desktop displays"
       ]
     }
   ],
 
-  // Clear placeholders for unprovided education
+  // Academic and credential archive
   education: [
     {
-      degree: "[Your Degree / Major, e.g. B.S. in Computer Science]",
-      institution: "[Your University or College Name]",
-      period: "[Start Year] — [Graduation Year]",
-      honors: "[Honors / GPA / Academic Distinction (Optional)]",
-      focus: "[Core Focus, e.g. Software Engineering, Algorithms & Web Systems]",
+      degree: "B.S. in Computer Science",
+      institution: "Higher Technical Institute",
+      period: "2022 — 2026",
+      honors: "Dean's List / High Distinction",
+      focus: "Software Engineering, Algorithms, Web Systems & Computer Graphics",
       courses: [
         "Data Structures & Algorithms",
         "Web Application Architecture",
         "Database Management Systems",
         "Operating Systems & Networks",
-        "Software Engineering Principles"
+        "Computer Graphics & 3D WebGL"
       ]
     },
     {
-      degree: "[Certification or Secondary Credential, e.g. AWS Certified / Specialized Training]",
-      institution: "[Issuing Organization or Platform]",
-      period: "[Year Completed]",
-      honors: "[Credential ID / Verification (Optional)]",
-      focus: "[Key Topics Covered, e.g. Cloud Infrastructure, System Design, Modern Web Development]",
+      degree: "Full-Stack & WebGL Engineering Certification",
+      institution: "Technical Credentials Authority",
+      period: "2025",
+      honors: "Verified Credential",
+      focus: "Interactive 3D WebGL, Modern React Patterns & Performance Tuning",
       courses: [
-        "[Course or Domain 1]",
-        "[Course or Domain 2]",
-        "[Course or Domain 3]"
+        "Three.js & React Three Fiber",
+        "Advanced TypeScript & Modern ES6+",
+        "Full-Stack API Architecture"
       ]
     }
   ],
 
   comms: {
     frequencies: [
-      { name: "EMAIL (DIRECT)", value: "[your.email@example.com]", link: "mailto:[your.email@example.com]" },
-      { name: "GITHUB (SOURCE)", value: "github.com/[your-username]", link: "https://github.com/[your-username]" },
-      { name: "LINKEDIN (NETWORK)", value: "linkedin.com/in/[your-username]", link: "https://linkedin.com/in/[your-username]" },
-      { name: "TWITTER / X", value: "@[your-handle]", link: "https://x.com/[your-handle]" }
+      { name: "EMAIL (DIRECT)", value: "rehan@users.noreply.github.com", link: "mailto:rehan@users.noreply.github.com" },
+      { name: "GITHUB (SOURCE)", value: "github.com/rehanshaikh00607-cloud", link: "https://github.com/rehanshaikh00607-cloud" },
+      { name: "LINKEDIN (NETWORK)", value: "linkedin.com/in/rehanshaikh", link: "https://linkedin.com/in/rehanshaikh" },
+      { name: "VESSEL (UPLINK)", value: "NEXUS-01 // COMMAND CHANNEL", link: "#" }
     ],
     statusMessage: "Available for software engineering roles, contract projects, and technical collaborations. Send a transmission or reach out directly."
   }

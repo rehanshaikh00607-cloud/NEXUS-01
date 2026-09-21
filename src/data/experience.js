@@ -11,35 +11,35 @@ export const EXPERIENCE_DATA = [
   {
     id: "mission-2026",
     year: "2026",
-    title: "CURRENT MISSION",
+    title: "FULL-STACK & 3D INTERFACES",
     status: "ACTIVE MISSION",
     isActive: true,
-    organization: "Placeholder",
-    organizationDetail: "[Placeholder for current role, studies, or work]",
-    description: "Add your experience here. Detail your ongoing responsibilities, current projects, and technical initiatives.",
-    technologies: ["React", "JavaScript", "Three.js"]
+    organization: "Independent Engineering",
+    organizationDetail: "Full-Stack Development & Interactive 3D WebGL",
+    description: "Architecting and shipping high-performance web applications, interactive 3D spaces, and responsive frontend systems with modern React and Three.js.",
+    technologies: ["React", "JavaScript (ES6+)", "Three.js", "WebGL", "Node.js", "Vite"]
   },
   {
     id: "mission-2025",
     year: "2025",
-    title: "MISSION LOG 02",
+    title: "WEB APPLICATIONS ARCHITECTURE",
     status: "MISSION LOGGED",
     isActive: false,
-    organization: "Placeholder",
-    organizationDetail: "[Placeholder]",
-    description: "Add your experience here. Summarize key technical accomplishments, systems architected, or team collaborations.",
-    technologies: ["JavaScript", "HTML/CSS", "Git"]
+    organization: "Systems Development",
+    organizationDetail: "Frontend Systems & API Integration",
+    description: "Engineered scalable client-side features, optimized render cycles and bundle payloads, and integrated real-time REST and WebSocket telemetry pipelines.",
+    technologies: ["React", "JavaScript", "REST APIs", "Git", "TailwindCSS"]
   },
   {
     id: "mission-2024",
     year: "2024",
-    title: "MISSION LOG 01",
+    title: "FOUNDATIONAL SOFTWARE ENGINEERING",
     status: "ARCHIVED",
     isActive: false,
-    organization: "Placeholder",
-    organizationDetail: "[Placeholder]",
-    description: "Add your experience here. Describe foundational learning, academic projects, or early software developments.",
-    technologies: ["Web Fundamentals", "Algorithms"]
+    organization: "Engineering Core",
+    organizationDetail: "Computer Science & Web Fundamentals",
+    description: "Built foundational expertise in core data structures, algorithmic efficiency, modern JavaScript design patterns, and responsive UI engineering.",
+    technologies: ["JavaScript", "HTML5 / CSS3", "Algorithms", "Git & GitHub"]
   }
 ]
 

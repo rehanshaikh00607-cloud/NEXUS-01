@@ -22,8 +22,8 @@ export const PROJECTS_DATA = [
     challenge: "Streaming large LLM responses with syntax formatting in real-time while maintaining sub-second UI responsiveness, preventing token timeouts, and delivering dependable responses.",
     solution: "Designed an asynchronous streaming architecture with Node.js and React, integrated optimistic state updates, and implemented client-side stream buffering with structured error fallback.",
     result: "Delivered sub-second response streaming, zero dropped sessions during concurrency testing, and a lightweight, distraction-free study tool.",
-    liveDemoUrl: "https://example.com/ai-study-assistant-demo",
-    githubUrl: "https://github.com/example/ai-study-assistant"
+    liveDemoUrl: "https://rehanshaikh00607-cloud.github.io/NEXUS-01/",
+    githubUrl: "https://github.com/rehanshaikh00607-cloud/ai-study-assistant"
   },
   {
     id: "ecommerce-platform",
@@ -43,8 +43,8 @@ export const PROJECTS_DATA = [
     challenge: "Rendering interactive 3D models smoothly in the browser without slowing down initial page loads or causing performance lag on lower-powered mobile devices.",
     solution: "Optimized 3D geometry meshes, implemented texture compression, decoupled the Three.js canvas render loop from React state updates, and added graceful 2D fallbacks.",
     result: "Achieved consistent 60 FPS rendering on modern browsers, under 1.5s initial load times, and a frictionless shopping experience from discovery to checkout.",
-    liveDemoUrl: "https://example.com/ecommerce-platform-demo",
-    githubUrl: "https://github.com/example/ecommerce-platform"
+    liveDemoUrl: "https://rehanshaikh00607-cloud.github.io/NEXUS-01/",
+    githubUrl: "https://github.com/rehanshaikh00607-cloud/ecommerce-website"
   },
   {
     id: "developer-analytics",
@@ -64,7 +64,7 @@ export const PROJECTS_DATA = [
     challenge: "Handling high-frequency incoming telemetry packets without overwhelming the browser DOM or causing frame drops during graph updates.",
     solution: "Implemented an in-memory sliding-window circular buffer, batched DOM updates via requestAnimationFrame, and used memoized canvas rendering for telemetry charts.",
     result: "Successfully sustained over 5,000 events per second with under 50ms render latency and zero UI freezing.",
-    liveDemoUrl: "https://example.com/developer-analytics-demo",
-    githubUrl: "https://github.com/example/developer-analytics"
+    liveDemoUrl: "https://rehanshaikh00607-cloud.github.io/NEXUS-01/",
+    githubUrl: "https://github.com/rehanshaikh00607-cloud/developer-dashboard"
   }
 ]

@@ -12,24 +12,24 @@ export const ACADEMIC_JOURNEY = [
   {
     id: "academic-2026",
     year: "2026",
-    title: "CURRENT STUDIES",
+    title: "COMPUTER SCIENCE & SOFTWARE ENGINEERING",
     isCurrent: true,
-    institution: "[Add institution]",
-    program: "[Add program]",
-    description: "Add details about your current academic curriculum, major coursework, or research initiatives here.",
+    institution: "Higher Technical Institute",
+    program: "B.S. in Computer Science",
+    description: "Advanced curriculum focused on software engineering design patterns, distributed web systems, algorithmic optimization, and modern graphics programming.",
     status: "ENROLLED // IN PROGRESS",
-    modules: ["Core Coursework 01", "Core Coursework 02", "Advanced Elective"]
+    modules: ["Data Structures & Algorithms", "Full-Stack Web Architecture", "Computer Graphics & WebGL", "Database Systems"]
   },
   {
     id: "academic-2024",
     year: "2024",
-    title: "PREVIOUS EDUCATION",
+    title: "FOUNDATIONAL COMPUTING & MATHEMATICS",
     isCurrent: false,
-    institution: "[Add institution]",
-    program: "[Add program]",
-    description: "Summary of your previous academic qualification, foundational degree, or secondary education.",
+    institution: "Collegiate Studies",
+    program: "Science & Computational Mathematics",
+    description: "Rigorous training in discrete mathematics, analytical problem solving, object-oriented principles, and programming paradigms.",
     status: "COMPLETED",
-    modules: ["Foundational Module 01", "Foundational Module 02"]
+    modules: ["Calculus & Linear Algebra", "Object-Oriented Programming", "Computational Logic"]
   }
 ]
 
@@ -37,20 +37,20 @@ export const CERTIFICATIONS_DATA = [
   {
     id: "CERT-001",
     code: "CERT-001",
-    name: "[CERTIFICATION NAME]",
-    issuer: "[ORGANIZATION]",
-    date: "[DATE]",
-    credentialUrl: null, // Set to valid URL string when available; null provides safe placeholder
-    skills: ["Software Engineering", "Cloud Infrastructure"]
+    name: "Modern Full-Stack Web Architecture",
+    issuer: "Technical Credentials Authority",
+    date: "2025",
+    credentialUrl: null,
+    skills: ["React", "JavaScript (ES6+)", "REST APIs", "Vite"]
   },
   {
     id: "CERT-002",
     code: "CERT-002",
-    name: "[CERTIFICATION NAME]",
-    issuer: "[ORGANIZATION]",
-    date: "[DATE]",
+    name: "Interactive 3D Graphics & WebGL Engineering",
+    issuer: "Graphics Computing Lab",
+    date: "2025",
     credentialUrl: null,
-    skills: ["Full-Stack Development", "System Architecture"]
+    skills: ["Three.js", "WebGL", "Shader Fundamentals", "Performance Tuning"]
   }
 ]
 

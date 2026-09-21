@@ -32,6 +32,23 @@ const Spaceship = forwardRef(function Spaceship(
       strobeRef.current.intensity = isPulse ? 3.8 : 0.15
     }
 
+    // Dynamic forward navigation headlight response to velocity and boost
+    if (headlightRef.current) {
+      const boosting = thrustRef?.current?.isBoosting || isBoosting
+      const targetIntensity = boosting ? 2.6 : 1.2
+      const targetDist = boosting ? 18 : 10
+      headlightRef.current.intensity = THREE.MathUtils.lerp(
+        headlightRef.current.intensity,
+        targetIntensity,
+        1 - Math.exp(-8.0 * dt)
+      )
+      headlightRef.current.distance = THREE.MathUtils.lerp(
+        headlightRef.current.distance,
+        targetDist,
+        1 - Math.exp(-8.0 * dt)
+      )
+    }
+
     // Smooth visual roll banking and pitch tilt responding to flight maneuvers
     if (visualMeshGroupRef.current) {
       const targetBank = bankRef ? bankRef.current : bankAngle

@@ -7,13 +7,12 @@
 export const ABOUT_DATA = {
   profile: {
     name: "Arsh",
-    role: "[YOUR ROLE]",
-    location: "[YOUR LOCATION]",
+    role: "Software Engineer & Full-Stack Developer",
+    location: "Remote / Open to Relocation",
     callsign: "NEXUS-01",
     status: "ACTIVE",
     clearance: "CREW COMMANDER",
-    // Set to your image path (e.g. '/pilot/profile.jpg') when ready, or leave null for clean placeholder
-    image: null
+    image: `${import.meta.env.BASE_URL}pilot/profile.jpg`
   },
 
   missionLog: {
