@@ -36,10 +36,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy 404 and nojekyll
+      - name: Copy 404, CNAME and nojekyll
         run: |
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
+          echo "nexus-01.com" > dist/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
