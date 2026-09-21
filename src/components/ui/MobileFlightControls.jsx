@@ -37,7 +37,7 @@ export default function MobileFlightControls({
     }
   }
 
-  // Prevent default context menu and gestures on control pads
+  // Prevent default context menu and touch actions on control pads
   const handleTouchStart = (dir) => (e) => {
     e.preventDefault()
     e.stopPropagation()

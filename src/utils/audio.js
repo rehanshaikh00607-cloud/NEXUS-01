@@ -34,29 +34,29 @@ class SoundSystem {
     this.engineRunning = false
     this.currentBoostState = false
 
-    // Auto-resume on first interaction fallback with clean listener removal
+    // Auto-resume on first user interaction fallback with clean listener removal
     if (typeof window !== 'undefined') {
-      const removeGestureListeners = () => {
-        window.removeEventListener('pointerdown', resumeOnGesture)
-        window.removeEventListener('keydown', resumeOnGesture)
-        this._cleanupGestureListeners = null
+      const removeInteractionListeners = () => {
+        window.removeEventListener('pointerdown', resumeOnInteraction)
+        window.removeEventListener('keydown', resumeOnInteraction)
+        this._cleanupInteractionListeners = null
       }
-      const resumeOnGesture = () => {
+      const resumeOnInteraction = () => {
         if (this.ctx) {
           if (this.ctx.state === 'suspended') {
             this.ctx.resume().then(() => {
               if (this.ctx && this.ctx.state === 'running') {
-                removeGestureListeners()
+                removeInteractionListeners()
               }
             }).catch(() => {})
           } else if (this.ctx.state === 'running') {
-            removeGestureListeners()
+            removeInteractionListeners()
           }
         }
       }
-      this._cleanupGestureListeners = removeGestureListeners
-      window.addEventListener('pointerdown', resumeOnGesture, { passive: true })
-      window.addEventListener('keydown', resumeOnGesture, { passive: true })
+      this._cleanupInteractionListeners = removeInteractionListeners
+      window.addEventListener('pointerdown', resumeOnInteraction, { passive: true })
+      window.addEventListener('keydown', resumeOnInteraction, { passive: true })
 
       // Global audio state inspection
       window.__NEXUS_AUDIO_DEBUG__ = () => this.getDebugState()
@@ -103,12 +103,12 @@ class SoundSystem {
     this.init()
     if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().then(() => {
-        if (this._cleanupGestureListeners && this.ctx && this.ctx.state === 'running') {
-          this._cleanupGestureListeners()
+        if (this._cleanupInteractionListeners && this.ctx && this.ctx.state === 'running') {
+          this._cleanupInteractionListeners()
         }
       }).catch(() => {})
-    } else if (this.ctx && this.ctx.state === 'running' && this._cleanupGestureListeners) {
-      this._cleanupGestureListeners()
+    } else if (this.ctx && this.ctx.state === 'running' && this._cleanupInteractionListeners) {
+      this._cleanupInteractionListeners()
     }
   }
 
