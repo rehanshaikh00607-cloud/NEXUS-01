@@ -7,7 +7,8 @@ import {
   Sparkles,
   Move,
   Layers,
-  CheckCircle2
+  CheckCircle2,
+  Hand
 } from 'lucide-react'
 import { soundManager } from '../../utils/audio'
 
@@ -126,7 +127,44 @@ export default function FlightManualModal({ onClose }) {
               </ul>
             </div>
 
-            {/* 4. Portfolio Destinations */}
+            {/* 4. Hand Gesture Controls */}
+            <div className="manual-card sci-fi-notch">
+              <div className="card-header">
+                <Hand size={15} className="text-cyan" />
+                <h4>HAND GESTURE CONTROLS (OPTIONAL)</h4>
+              </div>
+              <p className="card-note">
+                Click <b>[ ENABLE GESTURE CONTROL ]</b> on the HUD to steer with your webcam. Processing runs 100% locally.
+              </p>
+              <ul className="manual-keys-list">
+                <li>
+                  <span className="key-pill highlight">OPEN PALM</span>
+                  <span>Move hand Left / Right / Up / Down (with center deadzone)</span>
+                </li>
+                <li>
+                  <span className="key-pill">CLOSED FIST</span>
+                  <span>Forward propulsion (holding W)</span>
+                </li>
+                <li>
+                  <span className="key-pill">TWO FINGERS</span>
+                  <span>Reverse thrusters / brake (holding S)</span>
+                </li>
+                <li>
+                  <span className="key-pill highlight">PINCH</span>
+                  <span>Warp Boost afterburners (thumb + index touching)</span>
+                </li>
+                <li>
+                  <span className="key-pill">HAND TILT</span>
+                  <span>Roll trim left / right (tilting wrist left / right)</span>
+                </li>
+                <li>
+                  <span className="key-pill highlight-enter">SAFETY</span>
+                  <span>Hand disappearance halts all flight movement immediately</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 5. Portfolio Destinations */}
             <div className="manual-card sci-fi-notch">
               <div className="card-header">
                 <Sparkles size={15} className="text-cyan" />

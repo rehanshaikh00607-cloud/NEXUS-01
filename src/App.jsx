@@ -7,6 +7,9 @@ const MissionPanel = lazy(() => import('./components/MissionPanel'))
 import { DESTINATIONS, commanderData } from './data/destinations'
 import { SKILLS_SUBSYSTEMS } from './data/skills'
 import { useSpaceshipControls } from './hooks/useSpaceshipControls'
+import { useHandGestures } from './hooks/useHandGestures'
+import GestureControlWidget from './components/ui/GestureControlWidget'
+import FlightManualModal from './components/ui/FlightManualModal'
 import { useProximity } from './hooks/useProximity'
 import { soundManager } from './utils/audio'
 import {
@@ -179,105 +182,6 @@ function CinematicIntro({ onLaunch }) {
   )
 }
 
-// ================= FLIGHT MANUAL & CONTROLS MODAL =================
-function FlightManualModal({ onClose }) {
-  const handleClose = () => {
-    soundManager.playClick()
-    onClose()
-  }
-
-  return (
-    <div className="modal-backdrop" onClick={handleClose}>
-      <div className="flight-manual-modal sci-fi-notch" onClick={(e) => e.stopPropagation()}>
-        <div className="manual-header">
-          <div className="manual-title-row">
-            <Rocket size={18} className="text-cyan" />
-            <h2>NEXUS-01 // FLIGHT MANUAL & CONTROLS</h2>
-          </div>
-          <button className="dest-close-btn" onClick={handleClose} title="Close Manual [ESC]">
-            <span>CLOSE</span>
-            <span className="key-tag">[ESC]</span>
-            <X size={16} />
-          </button>
-        </div>
-
-        <div className="manual-body">
-          <p className="manual-intro">
-            Welcome to the <b>NEXUS-01</b> reconnaissance vessel. Navigate orbital sectors to inspect
-            Commander Arsh's engineering projects, technical stack, and career background.
-          </p>
-
-          <div className="manual-grid">
-            <div className="manual-card sci-fi-notch">
-              <div className="card-header">
-                <Move size={15} className="text-cyan" />
-                <h4>DESKTOP FLIGHT CONTROLS</h4>
-              </div>
-              <ul className="manual-keys-list">
-                <li><span className="key-pill">W / S</span><span>Forward / backward propulsion</span></li>
-                <li><span className="key-pill">← / →</span><span>Strafe left / right (physically move ship left / right)</span></li>
-                <li><span className="key-pill">↑ / ↓</span><span>Move up / down (physically move ship up / down)</span></li>
-                <li><span className="key-pill">Q / E</span><span>Roll trim left / right</span></li>
-                <li><span className="key-pill highlight">SHIFT</span><span>Warp Boost (accelerate to max speed)</span></li>
-                <li><span className="key-pill">SPACE</span><span>Retro-braking halt</span></li>
-              </ul>
-            </div>
-
-            <div className="manual-card sci-fi-notch">
-              <div className="card-header">
-                <Layers size={15} className="text-cyan" />
-                <h4>EXPLORATION & INTERACTION</h4>
-              </div>
-              <ul className="manual-keys-list">
-                <li><span className="key-pill highlight-enter">ENTER</span><span>Interact / open selected or nearby destination</span></li>
-                <li><span className="key-pill">ESC</span><span>Close active dossier or manual and return to flight</span></li>
-                <li><span className="key-pill">NAV DOCK</span><span>Select destination via bottom sector dock</span></li>
-                <li><span className="key-pill">M</span><span>Toggle synthesized sound effects</span></li>
-                <li><span className="key-pill">H / ?</span><span>Open / Close Flight Manual</span></li>
-              </ul>
-            </div>
-
-            <div className="manual-card sci-fi-notch">
-              <div className="card-header">
-                <MousePointer size={15} className="text-cyan" />
-                <h4>MOUSE & POINTER CONTROLS</h4>
-              </div>
-              <ul className="manual-keys-list">
-                <li><span className="key-pill">CLICK</span><span>Select & warp via Sector Jump dock</span></li>
-                <li><span className="key-pill">CLICK</span><span>Interact with case studies & links</span></li>
-                <li><span className="key-pill">CLICK</span><span>Return to flight button to resume</span></li>
-              </ul>
-            </div>
-
-            <div className="manual-card sci-fi-notch">
-              <div className="card-header">
-                <Sparkles size={15} className="text-cyan" />
-                <h4>PORTFOLIO DESTINATIONS</h4>
-              </div>
-              <ul className="manual-keys-list">
-                <li><b>01. LAUNCH DOCK</b> — Flight controls & starter coordinates</li>
-                <li><b>02. ABOUT ME</b> — Terrestrial planet (Identity & current focus)</li>
-                <li><b>03. PROJECTS</b> — Ringed Gas Giant (AI Study Assistant, E-Commerce, Dashboard)</li>
-                <li><b>04. SKILLS</b> — Space Station Alpha (Full-stack technologies)</li>
-                <li><b>05. EXPERIENCE</b> — Moon-like planet (Career timeline & milestones)</li>
-                <li><b>06. EDUCATION</b> — Bronze Exoplanet (Academic degrees)</li>
-                <li><b>07. CONTACT</b> — Comms Satellite (Transmission dispatch)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="manual-footer">
-            <button className="action-btn primary" onClick={handleClose}>
-              <CheckCircle2 size={16} />
-              <span>RETURN TO EXPLORATION</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ================= PRIMARY APPLICATION COMPONENT =================
 export default function App() {
   const [isIntroActive, setIsIntroActive] = useState(true)
@@ -336,12 +240,18 @@ export default function App() {
     setShowFlightManual((prev) => !prev)
   }, [])
 
+  // Hand Gesture Flight Controls hook (local webcam tracking)
+  const handGestures = useHandGestures({
+    isInspecting: !!activeModalDestination || showFlightManual
+  })
+
   // Desktop Spaceship Controls hook
   const controls = useSpaceshipControls({
     isInspecting: !!activeModalDestination || showFlightManual,
     onTelemetryUpdate: setTelemetry,
     onToggleMute: handleToggleMute,
-    onToggleHelp: handleToggleHelp
+    onToggleHelp: handleToggleHelp,
+    gestureInputRef: handGestures.gestureInputRef
   })
 
   // Proximity & Discovery tracking hook
@@ -513,6 +423,20 @@ export default function App() {
             onToggleMute={handleToggleMute}
             onToggleHelp={handleToggleHelp}
             hudBooting={hudBooting}
+            gestureSlot={
+              <GestureControlWidget
+                isEnabled={handGestures.isEnabled}
+                status={handGestures.status}
+                statusMessage={handGestures.statusMessage}
+                showPreview={handGestures.showPreview}
+                currentGestureName={handGestures.currentGestureName}
+                toggleGestureControl={handGestures.toggleGestureControl}
+                disableGestureControl={handGestures.disableGestureControl}
+                togglePreview={handGestures.togglePreview}
+                setPreviewCanvas={handGestures.setPreviewCanvas}
+                onOpenHelp={handleToggleHelp}
+              />
+            }
             navigationSlot={
               !activeModalDestination && (
                 <Navigation

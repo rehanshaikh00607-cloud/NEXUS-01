@@ -248,6 +248,7 @@ function HUDComponent({
   onToggleMute = null,
   onToggleHelp = null,
   navigationSlot = null,
+  gestureSlot = null,
   hudBooting = false
 }) {
   const navLockTarget = lockedDestination
@@ -273,8 +274,9 @@ function HUDComponent({
           )}
         </div>
 
-        {/* TOP RIGHT: Mission Status & Mission Progress */}
+        {/* TOP RIGHT: Mission Status & Gesture Control */}
         <div className="hud-area-top-right">
+          {gestureSlot}
           <HUDStatusCard
             missionStatus={missionStatus}
             discoveredCount={discoveredCount}
