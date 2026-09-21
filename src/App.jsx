@@ -7,8 +7,6 @@ const MissionPanel = lazy(() => import('./components/MissionPanel'))
 import { DESTINATIONS, commanderData } from './data/destinations'
 import { SKILLS_SUBSYSTEMS } from './data/skills'
 import { useSpaceshipControls } from './hooks/useSpaceshipControls'
-import { useHandGestures } from './hooks/useHandGestures'
-import GestureControlWidget from './components/ui/GestureControlWidget'
 import FlightManualModal from './components/ui/FlightManualModal'
 import { useProximity } from './hooks/useProximity'
 import { soundManager } from './utils/audio'
@@ -240,18 +238,12 @@ export default function App() {
     setShowFlightManual((prev) => !prev)
   }, [])
 
-  // Hand Gesture Flight Controls hook (local webcam tracking)
-  const handGestures = useHandGestures({
-    isInspecting: !!activeModalDestination || showFlightManual
-  })
-
   // Desktop Spaceship Controls hook
   const controls = useSpaceshipControls({
     isInspecting: !!activeModalDestination || showFlightManual,
     onTelemetryUpdate: setTelemetry,
     onToggleMute: handleToggleMute,
-    onToggleHelp: handleToggleHelp,
-    gestureInputRef: handGestures.gestureInputRef
+    onToggleHelp: handleToggleHelp
   })
 
   // Proximity & Discovery tracking hook
@@ -423,20 +415,6 @@ export default function App() {
             onToggleMute={handleToggleMute}
             onToggleHelp={handleToggleHelp}
             hudBooting={hudBooting}
-            gestureSlot={
-              <GestureControlWidget
-                isEnabled={handGestures.isEnabled}
-                status={handGestures.status}
-                statusMessage={handGestures.statusMessage}
-                showPreview={handGestures.showPreview}
-                currentGestureName={handGestures.currentGestureName}
-                toggleGestureControl={handGestures.toggleGestureControl}
-                disableGestureControl={handGestures.disableGestureControl}
-                togglePreview={handGestures.togglePreview}
-                setPreviewCanvas={handGestures.setPreviewCanvas}
-                onOpenHelp={handleToggleHelp}
-              />
-            }
             navigationSlot={
               !activeModalDestination && (
                 <Navigation

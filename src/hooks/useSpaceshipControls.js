@@ -23,8 +23,7 @@ export function useSpaceshipControls({
   isInspecting = false,
   onTelemetryUpdate = null,
   onToggleMute = null,
-  onToggleHelp = null,
-  gestureInputRef = null
+  onToggleHelp = null
 } = {}) {
   const isInspectingRef = useRef(isInspecting)
   useEffect(() => {
@@ -257,27 +256,25 @@ export function useSpaceshipControls({
 
     const dt = Math.min(Math.max(delta, 0.001), 0.1)
     const k = keys.current
-    const g = isInspectingRef.current ? null : gestureInputRef?.current
 
     // Directional Inputs:
     // W/S = forward/backward along local -Z
-    // A/D = left/right along local X
-    // R/F = up/down along local Y
-    // Keyboard and gesture controls coexist and combine safely (Requirement 13)
+    // A/D or ArrowLeft/ArrowRight = left/right along local X
+    // R/F or ArrowUp/ArrowDown = up/down along local Y
     let forwardInput = 0
-    if (k.forward || (g?.active && g?.forward)) forwardInput += 1
-    if (k.backward || (g?.active && g?.backward)) forwardInput -= 1
+    if (k.forward) forwardInput += 1
+    if (k.backward) forwardInput -= 1
 
     let rightInput = 0
-    if (k.right || (g?.active && g?.right)) rightInput += 1
-    if (k.left || (g?.active && g?.left)) rightInput -= 1
+    if (k.right) rightInput += 1
+    if (k.left) rightInput -= 1
 
     let upInput = 0
-    if (k.up || (g?.active && g?.up)) upInput += 1
-    if (k.down || (g?.active && g?.down)) upInput -= 1
+    if (k.up) upInput += 1
+    if (k.down) upInput -= 1
 
     const isBrake = k.brake
-    const isBoost = k.boost || (g?.active && g?.boost)
+    const isBoost = k.boost
 
     // Pre-allocated vector references (zero GC churn)
     const inputDir = internalVectors.current.inputDir
@@ -287,27 +284,27 @@ export function useSpaceshipControls({
     const localForward = internalVectors.current.localForward
     const tempRollQuat = internalVectors.current.tempRollQuat
 
-    // 1. Roll Control (Q / E or Hand Tilt) - Rotates spaceship quaternion around local forward axis
+    // 1. Roll Control (Q / E) - Rotates spaceship quaternion around local forward axis
     const rollSpeed = 2.2 // rad/s
     let rollDelta = 0
-    if (k.rollLeft || (g?.active && g?.rollLeft)) rollDelta -= rollSpeed * dt // roll left
-    if (k.rollRight || (g?.active && g?.rollRight)) rollDelta += rollSpeed * dt // roll right
+    if (k.rollLeft) rollDelta -= rollSpeed * dt // roll left
+    if (k.rollRight) rollDelta += rollSpeed * dt // roll right
 
     if (rollDelta !== 0) {
       tempRollQuat.setFromAxisAngle(localForward, rollDelta)
       shipGroup.quaternion.multiply(tempRollQuat)
     }
 
-    // Visual Banking tilt for lateral movement (ArrowLeft / ArrowRight / Gesture Left/Right)
+    // Visual Banking tilt for lateral movement (ArrowLeft / ArrowRight)
     let desiredVisualBank = 0
-    if (k.left || (g?.active && g?.left)) desiredVisualBank += 0.35
-    if (k.right || (g?.active && g?.right)) desiredVisualBank -= 0.35
+    if (k.left) desiredVisualBank += 0.35
+    if (k.right) desiredVisualBank -= 0.35
     rollAngle.current = THREE.MathUtils.lerp(rollAngle.current, desiredVisualBank, 1 - Math.exp(-8.0 * dt))
 
-    // Visual Pitch tilt for vertical movement (ArrowUp / ArrowDown / Gesture Up/Down)
+    // Visual Pitch tilt for vertical movement (ArrowUp / ArrowDown)
     let desiredVisualPitch = 0
-    if (k.up || (g?.active && g?.up)) desiredVisualPitch += 0.22
-    if (k.down || (g?.active && g?.down)) desiredVisualPitch -= 0.22
+    if (k.up) desiredVisualPitch += 0.22
+    if (k.down) desiredVisualPitch -= 0.22
     pitchAngle.current = THREE.MathUtils.lerp(pitchAngle.current, desiredVisualPitch, 1 - Math.exp(-8.0 * dt))
 
     // 2. Build local 3D direction vector
