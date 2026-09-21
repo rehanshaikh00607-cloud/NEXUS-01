@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base: '/NEXUS-01/',
   plugins: [react()],
   server: {
     watch: {

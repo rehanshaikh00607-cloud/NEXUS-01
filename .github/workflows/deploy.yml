@@ -33,14 +33,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy 404 and CNAME
+      - name: Copy 404
         run: |
           cp dist/index.html dist/404.html
-          echo "nexus-01.com" > dist/CNAME
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          cname: nexus-01.com
