@@ -45,7 +45,7 @@ export default function AboutPanel({ onWarpToContact }) {
           <div className="pilot-photo-frame">
             {!imgError ? (
               <img
-                src={commander.photo || '/pilot/profile.jpg'}
+                src={commander.photo || `${import.meta.env.BASE_URL}pilot/profile.jpg`}
                 alt={`${commander.name} - ${commander.role}`}
                 className="pilot-profile-img"
                 onError={() => setImgError(true)}

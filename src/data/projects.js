@@ -11,7 +11,7 @@ export const PROJECTS_DATA = [
     tagline: "AI-powered learning and study platform",
     description: "An AI-powered learning and study platform that generates personalized quizzes, explains complex technical texts, and provides real-time programming assistance.",
     technologies: ["React", "Node.js", "JavaScript", "AI API"],
-    image: "/projects/ai-study-assistant.jpg",
+    image: `${import.meta.env.BASE_URL}projects/ai-study-assistant.jpg`,
     features: [
       "On-demand quiz generation tailored to student comprehension levels",
       "Interactive code syntax breakdown and runtime error debugging",
@@ -32,7 +32,7 @@ export const PROJECTS_DATA = [
     tagline: "Modern web storefront with interactive 3D product customization",
     description: "A high-performance e-commerce web platform featuring real-time 3D product configuration in WebGL, dynamic cart management, and seamless payment processing.",
     technologies: ["React", "Three.js", "Node.js", "JavaScript", "Express", "Stripe API"],
-    image: "/projects/ecommerce-website.jpg",
+    image: `${import.meta.env.BASE_URL}projects/ecommerce-website.jpg`,
     features: [
       "Real-time 3D product visualizer with 360-degree rotation and color customization",
       "Instant client-side cart updates with optimistic synchronization",
@@ -53,7 +53,7 @@ export const PROJECTS_DATA = [
     tagline: "Real-time engineering telemetry and service observability console",
     description: "A real-time developer metrics and telemetry console that aggregates server health, WebSocket event streams, build pipelines, and latency metrics into a unified dashboard.",
     technologies: ["React", "Node.js", "JavaScript", "WebSockets", "Docker", "Chart.js"],
-    image: "/projects/developer-dashboard.jpg",
+    image: `${import.meta.env.BASE_URL}projects/developer-dashboard.jpg`,
     features: [
       "Live streaming server telemetry with CPU, memory, and throughput metrics",
       "Real-time WebSocket event feed with search filtering and pause/resume",

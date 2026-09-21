@@ -153,8 +153,8 @@ export const commanderData = {
   status: "OPEN FOR OPPORTUNITIES",
   currentOrbit: "PRIMARY SYSTEM // CORE SECTOR",
   location: "[Your City, Country / Remote]",
-  photo: "/pilot/profile.jpg",
-  resumeUrl: "/resume.pdf",
+  photo: `${import.meta.env.BASE_URL}pilot/profile.jpg`,
+  resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
 
   // Concise, confident, human summary - no AI buzzwords
   shortIntroduction: "I am Arsh, a software engineer specializing in full-stack web applications and interactive 3D interfaces. I focus on writing clean, maintainable code, optimizing runtime performance, and shipping applications that are fast, accessible, and dependable.",
